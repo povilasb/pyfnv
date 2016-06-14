@@ -20,5 +20,6 @@ Usage
     import fnv
 
     data = 'my data'
-    fnv.hash(data, bits=64) # uses fnv.fnv_1a algorithm
+    fnv.hash(data, algorithm=fnv.fnv_1a, bits=64) # uses fnv.fnv_1a algorithm
+    fnv.hash(data, bits=64) # fnv.fnv_1a is a default algorithm
     fnv.hash(data, algorithm=fnv.fnv, bits=64)
