@@ -1,6 +1,7 @@
 # See: http://isthe.com/chongo/tech/comp/fnv/
 
 import functools
+from typing import Callable
 
 
 PRIMES = {
@@ -22,17 +23,18 @@ OFFSET_BASIS = {
 }
 
 
-def fnv_1a(hash_value, byte, bits):
+def fnv_1a(hash_value: int, byte: int, bits: int) -> int:
     """Calculate FNV-1A hash for the specified byte."""
     return ensure_bits_count((hash_value ^ byte) * PRIMES[bits], bits)
 
 
-def fnv(hash_value, byte, bits):
+def fnv(hash_value: int, byte: int, bits: int) -> int:
     """Calculate FNV hash for the specified byte."""
     return ensure_bits_count(hash_value * PRIMES[bits], bits) ^ byte
 
 
-def hash(data, algorithm=fnv_1a, bits=128):
+def hash(data: bytes, algorithm: Callable[[int, int, int], int]=fnv_1a,
+        bits: int=128) -> int:
     """Calculates the FNV hash for the specified data.
 
     Currently calculates only 128 bit hashes.
@@ -51,7 +53,7 @@ def hash(data, algorithm=fnv_1a, bits=128):
     )
 
 
-def ensure_bits_count(number, bits):
+def ensure_bits_count(number: int, bits: int) -> int:
     """
     Args:
         number (int)
