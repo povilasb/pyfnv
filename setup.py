@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='fnv',
-    version='0.1.0',
+    version='0.2.0',
     description='FNV hash functions.',
     long_description=open('README.rst').read(),
     url='https://github.com/povilasb/pyfnv',
