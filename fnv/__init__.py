@@ -24,12 +24,12 @@ OFFSET_BASIS = {
 
 def fnv_1a(hash_value, byte, bits):
     """Calculate FNV-1A hash for the specified byte."""
-    return ensure_bits_count((hash_value ^ ord(byte)) * PRIMES[bits], bits)
+    return ensure_bits_count((hash_value ^ byte) * PRIMES[bits], bits)
 
 
 def fnv(hash_value, byte, bits):
     """Calculate FNV hash for the specified byte."""
-    return ensure_bits_count(hash_value * PRIMES[bits], bits) ^ ord(byte)
+    return ensure_bits_count(hash_value * PRIMES[bits], bits) ^ byte
 
 
 def hash(data, algorithm=fnv_1a, bits=128):

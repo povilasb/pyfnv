@@ -7,7 +7,7 @@ import fnv
 def describe_hash():
     def describe_with_fnv_1a_algorithm():
         def it_returns_the_calculated_hash_for_specified_data():
-            data = '\x01\x02\x03\x04'
+            data = b'\x01\x02\x03\x04'
 
             assert_that(
                 fnv.hash(data, algorithm=fnv.fnv_1a),
@@ -15,7 +15,7 @@ def describe_hash():
             )
 
         def it_allows_to_specify_hash_size_in_bits():
-            data = '\x01\x02\x03\x04'
+            data = b'\x01\x02\x03\x04'
 
             assert_that(
                 fnv.hash(data, algorithm=fnv.fnv_1a, bits=64),
@@ -30,7 +30,7 @@ def describe_fnv():
     def it_returns_the_calculated_hash_for_the_specified_byte(hash_bits,
             initial_hash_value, expected_hash_value):
         assert_that(
-            fnv.fnv(initial_hash_value, '\x01', hash_bits),
+            fnv.fnv(initial_hash_value, 1, hash_bits),
             is_(expected_hash_value)
         )
 
